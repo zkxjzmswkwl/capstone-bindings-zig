@@ -23,13 +23,13 @@ pub const opCount = impl.opCount;
 pub const opIndex = impl.opIndex;
 pub const regsAccess = impl.regsAccess;
 
-const err = @import("src/error.zig");
+pub const err = @import("src/error.zig");
 pub const cs = err.cs;
 pub const CapstoneError = err.CapstoneError;
 pub const toError = err.toError;
 pub const fromError = err.fromError;
 
-const setup = @import("src/setup.zig");
+pub const setup = @import("src/setup.zig");
 pub const MallocFunction = setup.MallocFunction;
 pub const CallocFunction = setup.CallocFunction;
 pub const ReallocFunction = setup.ReallocFunction;
@@ -38,7 +38,7 @@ pub const VsnprintfFunction = setup.VsnprintfFunction;
 pub const initCapstone = setup.initCapstone;
 pub const initCapstoneManually = setup.initCapstoneManually;
 
-const enums = @import("src/enums.zig");
+pub const enums = @import("src/enums.zig");
 pub const Arch = enums.Arch;
 pub const Mode = enums.Mode;
 pub const Type = enums.Type;
