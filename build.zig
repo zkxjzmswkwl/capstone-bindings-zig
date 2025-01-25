@@ -1,13 +1,10 @@
 const std = @import("std");
 
 pub fn build(b: *std.Build) void {
-    const target = b.standardTargetOptions(.{});
+    const target = b.standardTargetOptions(.{ .default_target = .{ .cpu_arch = .x86_64, .os_tag = .windows } });
     const optimize = b.standardOptimizeOption(.{});
 
-    const capstone = b.dependency("capstone", .{
-        .target = target,
-        .optimize = optimize,
-    });
+    const capstone = b.dependency("capstone", .{ .target = target, .optimize = optimize, .@"86-att-disable" = true, .@"support-only-target-arch" = true });
     const compiled_capstone = capstone.artifact("capstone");
 
     compiled_capstone.getEmittedIncludeTree().addStepDependencies(&compiled_capstone.step);
